@@ -60,7 +60,7 @@ let   data = [
 
 
 export const dataStore = {
-    sendData: (data) => { subject.next([...data, ...data] ); },
+    sendData: (data) => { subject.next([...data] ); },
     onData: () => subject.asObservable(),
     data,
 };
