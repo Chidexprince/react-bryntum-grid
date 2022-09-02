@@ -59,7 +59,7 @@ let   data = [
                         }]
 
 
-export const dataStore = {
+export const DataStore = {
     sendData: (data) => { subject.next([...data] ); },
     onData: () => subject.asObservable(),
     data,
