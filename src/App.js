@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BryntumGrid } from '@bryntum/grid-react';
 import './App.scss';
-import { dataStore } from './store/DataStore';
+import { DataStore } from './store/DataStore';
 
 function App() { 
     const [toggleForm, setToggleForm] = useState(false);
-    const [data, setData] = useState(dataStore.data);
+    const [data, setData] = useState(DataStore.data);
     const [columns, setColumns] = useState([
         { text : 'Country Name', field : 'countryName', flex : 2 },
         { text : 'Code', field : 'code', flex: 1},
@@ -34,7 +34,7 @@ function App() {
     });
     
     useEffect(() => {
-        const subscription = dataStore.onData().subscribe(data => {
+        const subscription = DataStore.onData().subscribe(data => {
             setData(data);
         });
         return () => subscription.unsubscribe();   
@@ -50,7 +50,7 @@ function App() {
         formData.id = data.length + 1;
 
         // to add the new record to the data array
-        dataStore.sendData([...data, formData]);
+        DataStore.sendData([...data, formData]);
 
         // to reset the form
         setFormData({
